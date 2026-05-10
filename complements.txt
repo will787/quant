@@ -1,3 +1,6 @@
 # belmman equation
 # walk-forward analysis
-# penalidades, tecnicas de suvização (regularizacao)
+# penalidades, tecnicas de suavização (regularizacao)
+
+
+#dados - 2000 -> 202603
