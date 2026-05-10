@@ -32,12 +32,12 @@ series_dict = {
 }
 
 
-def get_data_ipea(series_dict):
+def get_data_ipea(series_dict, start_year):
 
     data_frames = []
-
+    start_year = start_year - 1
     for name, code in series_dict.items():
-        df = ipd.timeseries(code, yearGreaterThan=1995)
+        df = ipd.timeseries(code, yearGreaterThan=start_year)
         df = df.reset_index()
         value_col = next(
             col for col in df.columns
@@ -106,6 +106,9 @@ def plot_series(code, cols, title, ylabel, xlabel='Data'):
     plt.show()
 
 # %%
-data = get_data_ipea(series_dict)
+data = get_data_ipea(series_dict, start_year=2000)
 data.head()
+# %%
+data.to_csv('../db/dados_ipea.csv', index=True)
+data.tail(10)
 # %%

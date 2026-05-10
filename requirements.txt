@@ -6,7 +6,6 @@ hmmlearn
 pandas 
 numpy
 matplotlib
-yfinance
 plotly
 nbformat
 networkx
@@ -16,3 +15,5 @@ torch
 
 ipeadatapy
 python-bcb
+bacendata
+yfinance

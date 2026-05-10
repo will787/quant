@@ -1,11 +1,12 @@
 # %%
 import pandas as pd
-from bcb import sgs
+from bacendata import sgs #consulta para séries longas
+from bcb import Expectativas
 
-def coletar_fluxo_capitais(start_date='2020-01-01'):
+def coletar_fluxo_capitais(start_date='2000-01-01', end_date='2026-03-31'):
     series = {
-        'selic': 432,
-        'ied_liquido': 2860,
+        'meta_taxa_selic': 432,
+        'taxa_selic': 11,
         'dolar_cambio_livre': 1, #venda (quanto esta vendendo para comprar real)
         'euro_cambio_livre': 21619,
         'iene_cambio_livre': 21621
@@ -14,7 +15,7 @@ def coletar_fluxo_capitais(start_date='2020-01-01'):
     dados_fluxo = {}
     for nome, codigo in series.items():
         try:
-            serie = sgs.get(codigo, start=start_date)
+            serie = sgs.get(codigo, start=start_date, end=end_date)
             serie = serie.rename(columns={codigo: nome})
             
             print(f"{nome}:")
@@ -32,15 +33,15 @@ def coletar_fluxo_capitais(start_date='2020-01-01'):
 
 # Coletar dados
 df_bacen = coletar_fluxo_capitais()
-
-df_bacen = df_bacen.rename(columns={
-    '432': 'selic',
-    '2860': 'ied_liquido',
-    '1': 'dolar_cambio_livre',
-    '21619': 'euro_cambio_livre',
-    '21621': 'iene_cambio_livre'
-})
-
 # %%
-df_bacen
+df_bacen.columns = [
+    'meta_taxa_selic',
+    'taxa_selic',
+    'dolar_cambio_livre_p_tax',
+    'euro_cambio_livre',
+    'iene_cambio_livre'
+]
+df_bacen.tail(10)
+df_bacen.head()
+df_bacen.to_csv('dados_bacen.csv', index=True)
 # %%
