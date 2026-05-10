@@ -1,0 +1,3 @@
+# belmman equation
+# walk-forward analysis
+# penalidades, tecnicas de suvização (regularizacao)

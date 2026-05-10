@@ -1,0 +1,18 @@
+# hmm para deteccao de regimes
+
+# markov switching para recalcular pesos do portfolio
+
+hmmlearn
+pandas 
+numpy
+matplotlib
+yfinance
+plotly
+nbformat
+networkx
+torch
+
+#data
+
+ipeadatapy
+python-bcb
