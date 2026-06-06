@@ -43,7 +43,7 @@ def prepare_data(imp, sc, df: pd.DataFrame, feature_cols):
     return X, y
 
 if __name__ == "__main__":
-    df = read_gold_data("/Users/will/enviroment/quant/data/gold/monthly_data.parquet")
+    df = read_gold_data("data/gold/monthly_data.parquet")
     df = create_targets_and_lags(df)
     feature_cols = [c for c in df.columns if c not in ['ibov_ret_1m']]
     train, val, test = split_data(df, "2015-12-31", "2018-12-31")
