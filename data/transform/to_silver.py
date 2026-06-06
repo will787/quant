@@ -18,9 +18,7 @@ def create_monthly_silver_view(
     print(f"Lendo dados de: {input_path}")
     df = pd.read_csv(input_path)
     
-    # --- NOVA LÓGICA: Remoção de colunas se especificadas ---
     if columns_to_drop:
-        # Filtra apenas as colunas que realmente existem no df para evitar erros de KeyError
         existing_cols = [col for col in columns_to_drop if col in df.columns]
         if existing_cols:
             df.drop(columns=existing_cols, inplace=True)
@@ -64,8 +62,6 @@ def build_path(read_data: str, path_final: str):
 
 if __name__ == "__main__":
     
-    # Estrutura em tuplas: (caminho_bronze, caminho_silver, lista_colunas_deletar)
-    # Se não quiser deletar nada, basta passar None ou uma lista vazia []
     list_of_files = [
         ("data/bronze/dados_bacen.csv", "data/silver/macro_monthly.parquet", None),
         ("data/bronze/markets.csv", "data/silver/markets_monthly.parquet", None),

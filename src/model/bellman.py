@@ -30,9 +30,9 @@ def belmann_equation(states, actions, transactions, rewards, discount_factor=0.9
           q_value = rewards.get((s, a), 0)
           expected_future = 0
 
-        for next_states in states:
-          prob = transactions.get((s, a, next_states), 0)
-          expected_future += prob * (discount_factor * v[next_states]) #projection inference for the prob future value
+          for next_states in states:
+            prob = transactions.get((s, a, next_states), 0)
+            expected_future += prob * (discount_factor * v[next_states]) #projection inference for the prob future value
 
         q_value += expected_future
 
